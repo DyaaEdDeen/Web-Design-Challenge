@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage | Web Challenge</title>
+    <title>Homepage | WebCorp</title>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Navigation: This component is reused across all pages -->
+    <!-- Navigation -->
     <nav class="main-nav">
       <div class="container">
         <a href="index.html" class="logo">WebCorp</a>
@@ -19,34 +19,100 @@
       </div>
     </nav>
 
-    <!-- Hero Section: The main feature of the landing page -->
+    <!-- Hero Section -->
     <header class="hero">
-      <h1>Welcome to Our Website</h1>
-      <p>Your journey into modern web development starts here.</p>
+      <div class="hero-content">
+        <h1>Innovate. Create. Elevate.</h1>
+        <p>
+          We build beautiful, high-performance web solutions that drive growth
+          and engage users.
+        </p>
+        <a href="about.html" class="btn">Learn More About Us</a>
+      </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="main-content">
-      <div class="container">
-        <h2>What We Do</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          scelerisque leo nec libero fermentum, a tincidunt turpis iaculis.
-          Vivamus eget nisl id ligula rhoncus suscipit. Duis vel urna nec neque
-          viverra scelerisque. Curabitur vitae velit a nunc aliquam tincidunt.
-          Phasellus nec quam nec libero venenatis commodo.
-        </p>
-        <p>
-          Integer in ex id eros facilisis commodo. Sed vitae justo nec arcu
-          vehicula ultricies. Proin sit amet nulla id elit sollicitudin
-          vestibulum. Ut in justo non elit bibendum consectetur.
-        </p>
-      </div>
+    <main>
+      <!-- Feature Section 1 -->
+      <section class="feature-section">
+        <div class="container">
+          <div class="feature-content">
+            <div class="text-content">
+              <h2>Powerful By Design</h2>
+              <p>
+                Our approach combines cutting-edge technology with user-centric
+                design principles. We don't just build websites; we build
+                digital experiences that are intuitive, responsive, and
+                memorable.
+              </p>
+              <a href="#" class="btn">Explore Our Services</a>
+            </div>
+            <div class="image-content">
+              <img
+                src="assets/images/abstract-graphic.jpg"
+                alt="Abstract design graphic"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Section 2 (Reversed) -->
+      <section class="feature-section reversed" style="background-color: #fff">
+        <div class="container">
+          <div class="feature-content">
+            <div class="text-content">
+              <h2>Built for Performance</h2>
+              <p>
+                Speed and reliability are at the core of everything we do. Our
+                code is clean, optimized, and built to scale, ensuring your
+                platform can handle growth without skipping a beat.
+              </p>
+              <a href="#" class="btn">See The Technology</a>
+            </div>
+            <div class="image-content">
+              <img
+                src="assets/images/performance-graphic.jpg"
+                alt="Performance chart graphic"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section class="testimonials">
+        <div class="container">
+          <h2>Trusted by Industry Leaders</h2>
+          <div class="testimonial-grid">
+            <div class="testimonial-card">
+              <blockquote>
+                "Working with WebCorp was a game-changer. Their attention to
+                detail and commitment to quality is unparalleled."
+              </blockquote>
+              <p class="author">- Alex Johnson, CEO of TechStart</p>
+            </div>
+            <div class="testimonial-card">
+              <blockquote>
+                "The final product exceeded all our expectations. It's not just
+                functional, it's a work of art."
+              </blockquote>
+              <p class="author">- Sarah Chen, Director at InnovateCo</p>
+            </div>
+            <div class="testimonial-card">
+              <blockquote>
+                "A truly professional and efficient team. They delivered on time
+                and on budget, with fantastic results."
+              </blockquote>
+              <p class="author">- David Miller, Founder of NextGen</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- Footer: This component is also reused -->
+    <!-- Footer -->
     <footer class="main-footer">
-      <p>© 2024 Web Developer Challenge. All Rights Reserved.</p>
+      <p>© 2024 WebCorp Challenge. All Rights Reserved.</p>
     </footer>
   </body>
 </html>

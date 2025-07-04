@@ -1,26 +1,59 @@
-/* --- Global & Reusable Styles --- */
-body {
-  font-family: "Helvetica Neue", Arial, sans-serif;
+/* --- GOOGLE FONTS & CSS VARIABLES --- */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;700&display=swap");
+
+:root {
+  --primary-color: #6366f1; /* A nice modern indigo */
+  --primary-hover: #4f46e5;
+  --dark-bg: #111827; /* Very dark blue/gray */
+  --light-bg: #f8f9fa; /* Off-white */
+  --text-dark: #1f2937;
+  --text-light: #f9fafb;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+}
+
+/* --- GLOBAL & RESET STYLES --- */
+* {
+  box-sizing: border-box;
   margin: 0;
-  background-color: #f4f4f4;
-  color: #333;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  line-height: 1.7;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-  padding: 20px 0;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* --- Navigation Component --- */
+/* --- REUSABLE COMPONENTS: NAV & FOOTER --- */
 .main-nav {
-  background: #333;
-  color: #fff;
-  padding: 10px 0;
+  background: var(--dark-bg);
+  color: var(--text-light);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-nav .container {
@@ -30,228 +63,362 @@ body {
 }
 
 .main-nav .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-light);
   text-decoration: none;
 }
 
 .main-nav ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
 }
 
-.main-nav ul li {
-  margin-left: 20px;
-}
-
 .main-nav ul li a {
-  color: #fff;
+  color: var(--text-light);
   text-decoration: none;
   font-size: 1rem;
-  padding-bottom: 5px;
-  transition: border-bottom 0.2s ease-in-out;
+  font-weight: 500;
+  margin-left: 25px;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
 .main-nav ul li a:hover,
 .main-nav ul li a.active {
-  border-bottom: 2px solid #00aaff;
+  color: var(--primary-color);
+}
+.main-nav ul li a:hover::after,
+.main-nav ul li a.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
-/* --- Footer Component --- */
 .main-footer {
-  background: #333;
-  color: #fff;
+  background: var(--dark-bg);
+  color: var(--text-muted);
   text-align: center;
-  padding: 20px 0;
-  margin-top: 40px;
+  padding: 2.5rem 0;
+  margin-top: 4rem;
 }
 
-/* --- MILESTONE 1: Landing Page Styles --- */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px);
+}
+
+/* --- MILESTONE 1: LANDING PAGE --- */
+/* Hero Section */
 .hero {
-  /* You need to add a 'hero-banner.jpg' to your project/assets/images folder */
   background: url("../assets/images/hero-banner.jpg") no-repeat center
     center/cover;
-  height: 70vh;
-  color: #fff;
+  height: 80vh;
+  position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 20px;
-  /* A fallback color in case the image fails to load */
-  background-color: #555;
+  color: var(--text-light);
+}
+
+.hero::before {
+  /* Dark overlay for text readability */
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 24, 39, 0.8),
+    rgba(17, 24, 39, 0.5)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
 }
 
 .hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
 .hero p {
-  font-size: 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin-bottom: 2rem;
 }
 
-.main-content {
-  padding: 40px 0;
-  line-height: 1.7;
+/* Feature Sections */
+.feature-section {
+  padding: 4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 
-.main-content h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
+.feature-section .text-content {
+  flex: 1;
+}
+.feature-section .image-content {
+  flex: 1;
 }
 
-/* --- MILESTONE 2: About Page Styles --- */
-.team-section {
-  padding: 40px 0;
-  text-align: center;
+.feature-section.reversed {
+  flex-direction: row-reverse;
 }
 
-.team-section h2 {
+.feature-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 40px;
+  margin-bottom: 1rem;
+}
+
+.feature-section p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.feature-section img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+}
+
+/* Testimonials Section */
+.testimonials {
+  background: var(--dark-bg);
+  color: var(--text-light);
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.testimonial-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background: #1f2937;
+  padding: 2rem;
+  border-radius: 8px;
+  flex-basis: 30%;
+}
+
+.testimonial-card blockquote {
+  font-style: italic;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--primary-color);
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.testimonial-card .author {
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+/* --- MILESTONE 2: ABOUT PAGE --- */
+.page-header {
+  background: var(--primary-color);
+  color: var(--text-light);
+  padding: 3rem 0;
+  text-align: center;
+}
+.page-header h1 {
+  font-size: 3rem;
+}
+.page-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.team-section {
+  padding: 4rem 0;
 }
 
 .team-grid {
-  display: flex; /* This is the key property for this milestone */
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px; /* Provides space between the cards */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
 }
 
 .team-card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 280px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
 }
-
 .team-card:hover {
-  transform: translateY(-10px); /* This creates the "lift" effect */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .team-card img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 15px;
-  border: 3px solid #ddd;
+  margin-bottom: 1.5rem;
+  border: 4px solid var(--primary-color);
 }
-
 .team-card h3 {
-  margin: 10px 0 5px 0;
   font-size: 1.5rem;
+  margin-bottom: 0.25rem;
 }
-
 .team-card p {
-  color: #777;
-  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.social-links a {
+  color: var(--text-muted);
+  margin: 0 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.social-links a:hover {
+  color: var(--primary-color);
+}
+.social-links svg {
+  width: 24px;
+  height: 24px;
 }
 
-/* --- MILESTONE 3: Sign Up Page Styles --- */
+/* --- MILESTONE 3: SIGN UP PAGE --- */
 .signup-form-container {
   background: #fff;
-  max-width: 500px;
-  margin: 40px auto;
-  padding: 30px 40px;
+  max-width: 550px;
+  margin: 4rem auto;
+  padding: 2.5rem 3rem;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-
 .signup-form-container h2 {
   text-align: center;
-  margin-bottom: 30px;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .form-group input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box; /* Important for padding to not affect width */
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
   font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus {
   outline: none;
-  border-color: #007bff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
-/* Styles for error and success states */
 .form-group.success input {
-  border-color: #28a745;
+  border-color: var(--success-color);
 }
-
 .form-group.error input {
-  border-color: #dc3545;
+  border-color: var(--error-color);
 }
 
 .form-group .error-message {
-  color: #dc3545;
+  color: var(--error-color);
   font-size: 0.875em;
-  display: none; /* Hidden by default */
-  margin-top: 5px;
+  display: none;
+  margin-top: 0.5rem;
 }
-
 .form-group.error .error-message {
-  display: block; /* Shown when the parent has the 'error' class */
+  display: block;
 }
 
 .signup-btn {
   width: 100%;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  padding: 15px;
+  padding: 1rem;
   font-size: 1.1rem;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.signup-btn:hover {
-  background: #0056b3;
-}
-
-/* Password requirements styling */
 #password-reqs {
   list-style: none;
   padding: 0;
-  margin: 10px 0 0 0;
+  margin-top: 0.75rem;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-muted);
+}
+#password-reqs li {
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
 }
 
-#password-reqs li {
-  margin-bottom: 5px;
-  transition: color 0.3s ease;
+#password-reqs li::before {
+  content: "○";
+  margin-right: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
 }
 
 #password-reqs li.valid {
-  color: #28a745;
-  text-decoration: line-through;
+  color: var(--success-color);
+}
+
+#password-reqs li.valid::before {
+  content: "✔"; /* A simple checkmark */
+  color: var(--success-color);
 }

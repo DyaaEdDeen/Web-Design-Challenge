@@ -3,132 +3,300 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Web Developer Challenge</title>
+    <title>The Frontend Proving Ground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --dark-bg: #111827;
+        --light-bg: #1f2937;
+        --accent-color: #6366f1;
+        --accent-hover: #4f46e5;
+        --text-primary: #f9fafb;
+        --text-secondary: #9ca3af;
+        --success-color: #10b981;
+        --border-color-translucent: rgba(255, 255, 255, 0.1);
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Helvetica, Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f4f7f6;
-        color: #333;
+        font-family: "Inter", sans-serif;
+        background-color: var(--dark-bg);
+        background: linear-gradient(-45deg, #111827, #16213e, #1a1a2e, #0d1224);
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+        color: var(--text-primary);
         margin: 0;
-        padding: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
+        padding: 2rem;
+        box-sizing: border-box;
       }
-      .container {
-        max-width: 800px;
-        background-color: #fff;
-        padding: 2rem 3rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      .challenge-card {
+        max-width: 900px;
+        width: 100%;
+        background: rgba(31, 41, 55, 0.6);
+        border: 1px solid var(--border-color-translucent);
+        border-radius: 16px;
+        padding: 3rem 4rem;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
         text-align: center;
       }
+
+      h1,
+      h2,
+      strong {
+        font-family: "Poppins", sans-serif;
+      }
+
       h1 {
-        color: #0056b3;
-        border-bottom: 2px solid #e0e0e0;
-        padding-bottom: 10px;
-        margin-bottom: 20px;
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
       }
+
+      .subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        max-width: 650px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       h2 {
-        color: #333;
-        margin-top: 2rem;
-      }
-      .milestone {
-        background-color: #f9f9f9;
-        border-left: 4px solid #007bff;
-        padding: 15px;
-        margin: 15px 0;
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-bottom: 1.5rem;
         text-align: left;
+        border-bottom: 1px solid var(--border-color-translucent);
+        padding-bottom: 0.75rem;
       }
+
+      .milestones {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        text-align: left;
+        margin-bottom: 3rem;
+      }
+
+      .milestone {
+        background-color: rgba(17, 24, 39, 0.7);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid var(--accent-color);
+      }
+
       .milestone strong {
-        color: #0056b3;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        display: block;
+        margin-bottom: 0.5rem;
       }
-      ul {
+
+      .milestone span {
+        font-weight: 600;
+        color: var(--success-color);
+      }
+
+      .milestone p {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-top: 0.5rem;
+      }
+
+      /* Rules Section Styling */
+      .rules-container {
+        text-align: left;
+        margin-bottom: 3rem;
+      }
+
+      .rules-list {
         list-style: none;
         padding: 0;
-        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        vertical-align: middle;
+        white-space: nowrap;
+        overflow-x: scroll;
+        scrollbar-width: 0;
       }
-      li {
-        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle" viewBox="0 0 16 16"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/></svg>')
-          no-repeat left center;
-        padding-left: 25px;
-        margin-bottom: 10px;
+
+      .rules-list li {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
       }
+
+      .rules-list li::before {
+        content: "";
+        display: block;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-top: 2px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%236366F1'%3E%3Cpath fill-rule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clip-rule='evenodd' /%3E%3C/svg%3E");
+        background-size: contain;
+      }
+
+      .rules-list li strong {
+        color: var(--text-primary);
+        font-weight: 500;
+      }
+
+      /* --- Action & Bonus --- */
       .start-button {
         display: inline-block;
-        background-color: #28a745;
-        color: #fff;
-        padding: 15px 30px;
+        background: var(--accent-color);
+        color: var(--text-primary);
+        padding: 1rem 3rem;
         font-size: 1.2rem;
-        font-weight: bold;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
         text-decoration: none;
-        border-radius: 5px;
-        margin-top: 2rem;
-        transition: background-color 0.3s ease;
+        border-radius: 8px;
+        transition: transform 0.2s ease, background-color 0.2s ease,
+          box-shadow 0.2s ease;
       }
+
       .start-button:hover {
-        background-color: #218838;
+        background: var(--accent-hover);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .bonus-challenge {
+        margin-top: 3rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+        border: 1px dashed var(--text-secondary);
+      }
+      .bonus-challenge::before {
+        content: "SECRET BONUS CHALLENGE";
+        display: block;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        color: var(--success-color);
+        letter-spacing: 1px;
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+      .bonus-challenge p {
+        color: var(--text-secondary);
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 820px) {
+        .milestones,
+        .rules-list {
+          grid-template-columns: 1fr;
+        }
+        .challenge-card {
+          padding: 2.5rem 2rem;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Welcome, Challenger!</h1>
-      <p>
-        This is your first real-world project simulation. Your mission is to
-        replicate a 3-page website using only
-        <strong>HTML, CSS, and JavaScript</strong>. No frameworks, no libraries,
-        just pure code.
+    <main class="challenge-card">
+      <h1>The Frontend Proving Ground</h1>
+      <p class="subtitle">
+        Your first real-world simulation is here. Replicate a modern, 3-page
+        website using only <strong>HTML, CSS, and JavaScript</strong>. Push your
+        skills and prove you're ready for the next level.
       </p>
 
-      <h2>The Milestones & Rewards</h2>
-      <div class="milestone">
-        <strong>Milestone 1: The Landing Page (Prize: 200 EGP)</strong><br />
-        Replicate the home page. This includes the navigation bar, a full-width
-        hero banner, and a simple content section. The focus here is on solid
-        HTML structure and basic CSS styling.
-      </div>
-      <div class="milestone">
-        <strong>Milestone 2: The About Page (Prize: 500 EGP)</strong><br />
-        Replicate the "About Us" page. This level introduces more complex CSS
-        layouts using Flexbox to create a responsive card grid. You'll also need
-        to handle hover states.
-      </div>
-      <div class="milestone">
-        <strong
-          >Milestone 3: The Interactive Sign-Up Form (Prize: 1000 EGP)</strong
-        ><br />
-        Replicate the "Sign Up" page and implement its client-side validation
-        logic using JavaScript. The form must check for valid inputs (email
-        format, password strength) and display user-friendly error messages
-        without reloading the page.
+      <h2>Milestones & Rewards</h2>
+      <div class="milestones">
+        <div class="milestone">
+          <strong>Milestone 1: The Showcase Landing Page</strong>
+          <span>Reward: 200 EGP</span>
+          <p>
+            Build a multi-section landing page with varied layouts, a modern
+            hero section, and a testimonials grid.
+          </p>
+        </div>
+        <div class="milestone">
+          <strong>Milestone 2: The Professional "About Us"</strong>
+          <span>Reward: 500 EGP</span>
+          <p>
+            Create a team page using advanced CSS for card layouts, including
+            hover effects and embedded SVG icons.
+          </p>
+        </div>
+        <div class="milestone">
+          <strong>Milestone 3: The Smart Sign-Up Form</strong>
+          <span>Reward: 1000 EGP</span>
+          <p>
+            Implement a sign-up form with real-time, client-side validation in
+            JavaScript to provide instant user feedback.
+          </p>
+        </div>
       </div>
 
-      <h2 class="rules">Rules of Engagement</h2>
-      <ul>
-        <li>
-          <strong>Deadline:</strong> You have one week to complete as much as
-          you can.
-        </li>
-        <li>
-          <strong>Allowed Tools:</strong> You can use any search engine (Google,
-          etc.), and read any documentation (MDN is your best friend!).
-        </li>
-        <li>
-          <strong>AI Policy:</strong> No heavy use of AI for code generation.
-          Your code will be reviewed. Using it for simple debugging or
-          explanation is acceptable.
-        </li>
-        <li>
-          <strong>Submission:</strong> You will submit your project folder for
-          review.
-        </li>
-      </ul>
+      <h2>Rules of Engagement</h2>
+      <div class="rules-container">
+        <ul class="rules-list">
+          <li>
+            <strong>Deadline:</strong> You have <strong>one week</strong> to
+            complete as much of the challenge as you can.
+          </li>
+          <li>
+            <strong>Allowed Tools:</strong> Use any search engine and consult
+            documentation (MDN is your best friend). Learning to find answers is
+            a key skill.
+          </li>
+          <li>
+            <strong>AI Policy:</strong> Light use of AI for debugging or
+            understanding concepts is okay.
+            <strong>No direct copy-pasting of AI-generated code blocks.</strong>
+            Your work will be reviewed.
+          </li>
+          <li>
+            <strong>Submission:</strong> When finished, you will submit your
+            entire project folder for code review and evaluation.
+          </li>
+        </ul>
+      </div>
 
       <a href="project/index.html" class="start-button">Start The Challenge</a>
-    </div>
+
+      <div class="bonus-challenge">
+        <p>
+          Think you can replicate <strong>this introduction page</strong>? It's
+          not required, but succeeding will earn you a significant, undisclosed
+          cash bonus. A true test of your CSS skills.
+        </p>
+      </div>
+    </main>
   </body>
 </html>
